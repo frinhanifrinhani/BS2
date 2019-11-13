@@ -21,3 +21,18 @@ Route::group(['middleware' => 'jwt.auth', 'namespace' => 'Api\\'], function(){
 
 });
 
+
+//rotas para clientes
+Route::group(['middleware' => 'jwt.auth', 'prefix'=>'cliente' ], function(){
+      Route::get('','ClienteController@listarClientes');
+      Route::get('{id}','ClienteController@buscarClientePorId');
+      Route::post('cadastrar','ClienteController@cadastrarCliente');
+      Route::put('atualizar/{id}','ClienteController@atualizarCliente');
+      Route::delete('excluir/{id}','ClienteController@excluirCliente');
+});
+
+
+//not found 404
+Route::fallback(function(){
+    return response()->json(['mensagem' => 'Não Encontrado'], 404);
+})->name('api.fallback.404');

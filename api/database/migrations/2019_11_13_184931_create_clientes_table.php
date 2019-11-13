@@ -15,7 +15,7 @@ class CreateClientesTable extends Migration
     {
         Schema::create('clientes', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nome','100');
+            $table->string('nome','80');
             $table->date('data_nascimento');
             $table->string('sexo','2');
             $table->string('cep', '8')->nullable();
@@ -24,7 +24,8 @@ class CreateClientesTable extends Migration
             $table->string('numero','8')->nullable();
             $table->string('cidade','10')->nullable();
             $table->string('estado','2')->nullable();
-            $table->timestamps();
+            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('updated_at')->nullable();
         });
     }
 
