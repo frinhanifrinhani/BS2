@@ -31,14 +31,6 @@ class AuthController extends Controller
         return response()->json(compact('token','user'));
     }
 
-    public function refresh()
-    {
-        $token = $this->jwtAuth->getToken();
-        $token = $this->jwtAuth->refresh($token);
-
-        return response()->json(compact('token'));
-    }
-
     public function logout(Request $request)
     {
         $token = $this->jwtAuth->getToken();
