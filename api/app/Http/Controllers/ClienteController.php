@@ -27,9 +27,9 @@ class ClienteController extends Controller
     {
         $cliente = Clientes::find($id);
         if(!$cliente){
-            return response()->json(['mensagem' => 'cliente não encontrado']);
+            return response()->json(['message' => 'Cliente não encontrado']);
         }
-        return response()->json(['cliente' => $cliente]);
+        return response()->json(['Cliente' => $cliente]);
     }
 
     public function cadastrarCliente(ClienteRequest $request)
@@ -41,11 +41,11 @@ class ClienteController extends Controller
             $cliente->save();
 
             return response()->json(
-                ['mensagem' => 'cliente cadastrado'], 201);
+                ['message' => 'Cliente cadastrado'], 201);
 
         }catch (Exception $exception){
             return response()->json(
-                ['erro' => $exception->getMessage()]);
+                ['error' => $exception->getMessage()]);
         }
     }
 
@@ -53,7 +53,7 @@ class ClienteController extends Controller
     {
         $cliente = Clientes::find($id);
         if(!$cliente){
-            return response()->json(['mensagem' => 'cliente não encontrado']);
+            return response()->json(['message' => 'Cliente não encontrado']);
         }
 
         try{
@@ -61,11 +61,11 @@ class ClienteController extends Controller
             $cliente->save();
 
             return response()->json(
-                ['mensagem' => 'cliente atualizado'], 201);
+                ['message' => 'Cliente atualizado'], 201);
 
         }catch (Exception $exception){
             return response()->json(
-                ['erro' => $exception->getMessage()]);
+                ['error' => $exception->getMessage()]);
         }
 
     }
@@ -74,18 +74,18 @@ class ClienteController extends Controller
     {
         $cliente = Clientes::find($id);
         if(!$cliente){
-            return response()->json(['mensagem' => 'cliente não encontrado']);
+            return response()->json(['message' => 'Cliente não encontrado']);
         }
 
         try{
             $cliente->delete($id);
 
             return response()->json(
-                ['mensagem' => 'cliente excluído'], 201);
+                ['message' => 'Cliente excluído'], 201);
 
         }catch (Exception $exception){
             return response()->json(
-                ['erro' => $exception->getMessage()]);
+                ['error' => $exception->getMessage()]);
         }
 
     }

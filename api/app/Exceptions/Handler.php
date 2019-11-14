@@ -55,26 +55,26 @@ class Handler extends ExceptionHandler
         // erro 500 para ErrorException
         if ($exception instanceof ErrorException) {
             return response()->json([
-                'erro' => 'erro interno do servidor'
+                'error' => 'Erro interno do servidor'
             ], 500);
         }
 
         // erro 500 para PDOException
         if ($exception instanceof PDOException) {
             return response()->json([
-                'erro' => 'erro interno do servidor'
+                'error' => 'Erro interno do servidor'
             ], 500);
         }
 
         if ($exception instanceof NotFoundHttpException) {
             return response()->json([
-                'erro' => 'recurso não encontrado'
+                'error' => 'Recurso não encontrado'
             ], 404);
         }
 
         if ($exception instanceof MethodNotAllowedHttpException) {
             return response()->json([
-                'erro' => 'método não permitido'
+                'error' => 'Método não permitido'
             ], 405);
         }
 
