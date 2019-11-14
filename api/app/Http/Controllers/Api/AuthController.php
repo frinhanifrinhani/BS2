@@ -24,7 +24,7 @@ class AuthController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (! $token = $this->jwtAuth->attempt($credentials)) {
-            return response()->json(['error' => 'invalid_credentials'], 401);
+            return response()->json(['erro' => 'credenciais inválidas'], 401);
         }
 
         $user = $this->jwtAuth->authenticate($token);
@@ -36,16 +36,16 @@ class AuthController extends Controller
         $token = $this->jwtAuth->getToken();
 
         $this->jwtAuth->invalidate($token);
-        return response()->json(['message' => 'logout']);
+        return response()->json(['mensagem' => 'logout']);
     }
 
     public function getAuthUser()
     {
 
         if (! $user = $this->jwtAuth->parseToken()->authenticate()) {
-            return response()->json(['error' => 'user_not_found'], 404);
+            return response()->json(['erro' => 'usuário não encontrado'], 404);
         }
 
-        return response()->json(compact('user'));
+        return response()->json(compact('usuário'));
     }
 }

@@ -2,12 +2,14 @@
 
 namespace App\Exceptions;
 
+use ErrorException;
 use Exception;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use PDOException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
+
 
 class Handler extends ExceptionHandler
 {
@@ -50,7 +52,14 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        // erro 500 para ErrorException
+        if ($exception instanceof ErrorException) {
+            return response()->json([
+                'erro' => 'erro interno do servidor'
+            ], 500);
+        }
 
+        // erro 500 para PDOException
         if ($exception instanceof PDOException) {
             return response()->json([
                 'erro' => 'erro interno do servidor'
