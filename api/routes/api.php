@@ -31,8 +31,3 @@ Route::group(['middleware' => 'jwt.auth', 'prefix'=>'cliente' ], function(){
       Route::delete('excluir/{id}','ClienteController@excluirCliente');
 });
 
-
-//not found 404
-Route::fallback(function(){
-    return response()->json(['mensagem' => 'Não Encontrado'], 404);
-})->name('api.fallback.404');
