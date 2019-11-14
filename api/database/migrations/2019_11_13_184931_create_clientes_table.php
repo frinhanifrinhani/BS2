@@ -17,7 +17,7 @@ class CreateClientesTable extends Migration
             $table->bigIncrements('id');
             $table->string('nome','80');
             $table->date('data_nascimento');
-            $table->string('sexo','2');
+            $table->enum('sexo',['M','F']);
             $table->string('cep', '8')->nullable();
             $table->string('endereco','50')->nullable();
             $table->string('complemento','20')->nullable();

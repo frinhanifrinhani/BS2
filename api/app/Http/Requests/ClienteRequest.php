@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class ClienteRequest extends FormRequest
 {
@@ -26,7 +27,10 @@ class ClienteRequest extends FormRequest
         return [
             'nome' => 'required|max:80',
             'data_nascimento' => 'required|date',
-            'sexo' => 'required|max:1',
+            'sexo' => [
+                'required',
+                Rule::in(['M','F']),
+                ],
             'estado' => 'max:2',
         ];
     }
@@ -41,9 +45,9 @@ class ClienteRequest extends FormRequest
             'data_nascimento.date' => 'O campo :attribute deve ser preenchido com uma data válida',
 
             'sexo.required' => 'O campo :attribute deve ser preenchido',
-            'sexo.max' => 'O campo :attribute deve ser preenchido com apenas 1 caractere, M para Masculino ou F para Feminino',
+            'sexo.in' => 'O campo :attribute deve ser preenchido com apenas 1 caractere. M para Masculino ou F para Feminino',
 
-            'estado.max' => 'O campo :attribute deve ser preenchido com 2 caractere'
+            'estado.max' => 'O campo :attribute deve ser preenchido com 2 caracteres'
         ];
     }
 
