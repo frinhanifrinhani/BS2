@@ -46,6 +46,6 @@ class AuthController extends Controller
             return response()->json(['erro' => 'usuário não encontrado'], 404);
         }
 
-        return response()->json(compact('usuário'));
+        return response()->json(compact('user'));
     }
 }
