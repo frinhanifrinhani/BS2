@@ -19,10 +19,11 @@ class CreateClientesTable extends Migration
             $table->date('data_nascimento');
             $table->enum('sexo',['M','F']);
             $table->string('cep', '8')->nullable();
-            $table->string('endereco','50')->nullable();
-            $table->string('complemento','20')->nullable();
-            $table->string('numero','8')->nullable();
-            $table->string('cidade','10')->nullable();
+            $table->string('endereco','80')->nullable();
+            $table->string('complemento','80')->nullable();
+            $table->string('numero','20')->nullable();
+	        $table->string('bairro','50')->nullable();
+            $table->string('cidade','50')->nullable();
             $table->string('estado','2')->nullable();
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->nullable();

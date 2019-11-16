@@ -19,7 +19,7 @@ class ClienteController extends Controller
 
     public function listarClientes()
     {
-        $clientes = Clientes::paginate(2);
+        $clientes = Clientes::all();
         return response()->json(['clientes' => $clientes]);
     }
 
@@ -29,7 +29,7 @@ class ClienteController extends Controller
         if(!$cliente){
             return response()->json(['message' => 'Cliente não encontrado']);
         }
-        return response()->json(['Cliente' => $cliente]);
+        return response()->json(['cliente' => $cliente]);
     }
 
     public function cadastrarCliente(ClienteRequest $request)

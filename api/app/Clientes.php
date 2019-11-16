@@ -16,6 +16,7 @@ class Clientes extends Model
         'endereco',
         'complemento',
         'numero',
+        'bairro',
         'cidade',
         'estado',
         'created_at',
