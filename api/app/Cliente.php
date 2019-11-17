@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Cliente extends Model
 {
     protected $table = 'bs2.cliente';
-    public $timestamps = true;
+
     protected $fillable = array(
         'nome',
         'data_nascimento',

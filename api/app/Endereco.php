@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Endereco extends Model
 {
     protected $table = 'bs2.endereco';
-    public $timestamps = true;
+
     protected $fillable = array(
         'cep',
         'endereco',

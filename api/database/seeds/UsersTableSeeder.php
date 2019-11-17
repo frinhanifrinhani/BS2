@@ -17,5 +17,7 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('password'),
             'created_at' => now(),
         ]);
+
+        $this->command->info('Usuário cadastrado com sucesso!');
     }
 }
